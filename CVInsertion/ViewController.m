@@ -120,13 +120,36 @@
 }
 
 -(IBAction)didTapEmbiggenButton:(id)sender {
-    [self.customLayout setItemSize:CGSizeMake(150.0f, 150.0f)];
+
+    // Stop if we're going to go above 250x250
+    if (self.customLayout.itemSize.width >= 250) {
+        return;
+    }
+
+    float currentWidth = self.customLayout.itemSize.width;
+    float currentHeight = self.customLayout.itemSize.height;
+    
+    [self.customLayout setItemSize:CGSizeMake(currentWidth + 10,
+                                              currentHeight + 10)];
+
     [self.collectionView reloadData];
 }
 
 -(IBAction)didTapEmsmallenButton:(id)sender {
-    [self.customLayout setItemSize:CGSizeMake(100.0f, 100.0f)];
+
+    // Stop if we're going to go below 30x30
+    if (self.customLayout.itemSize.width <= 30) {
+        return;
+    }
+    
+    float currentWidth = self.customLayout.itemSize.width;
+    float currentHeight = self.customLayout.itemSize.height;
+    
+    [self.customLayout setItemSize:CGSizeMake(currentWidth - 10,
+                                              currentHeight - 10)];
+    
     [self.collectionView reloadData];
+    
 }
 
 

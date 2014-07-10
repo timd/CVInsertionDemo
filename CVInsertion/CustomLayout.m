@@ -7,10 +7,13 @@
 //
 
 #import "CustomLayout.h"
+#include <Math.h>
 
 @interface CustomLayout ()
 
 @property (nonatomic, strong) NSMutableArray *layoutAttributes;
+@property (nonatomic) CGPoint cvCenterPoint;
+@property (nonatomic) float spokeLength;
 
 @end
 
@@ -19,6 +22,14 @@
 -(void)prepareLayout {
     
     [super prepareLayout];
+    
+    // Figure out where the centre of the collection view is
+    self.cvCenterPoint = CGPointMake(self.collectionView.frame.size.width / 2,
+                                     self.collectionView.frame.size.height / 2);
+    
+    // Figure out the maximum length of the "spoke"
+    float smallestDimension = fminf(self.collectionView.frame.size.width, self.collectionView.frame.size.height);
+    self.spokeLength = (smallestDimension / 2) - 10.0f; // Allow 10 points of padding on each side
 
     // Figure out the number of items that we're dealing with
     // Here, we assume that there is only one section in the collection view
@@ -37,8 +48,8 @@
         UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:itemIndexPath];
         
         // Calculate where the centre of the item should be
-        float xCoord = 100 + (count * 10);
-        float yCoord = 100 + (count * 10);
+        float xCoord = self.cvCenterPoint.x + (count * 10);
+        float yCoord = self.cvCenterPoint.y + (count * 10);
         
         CGPoint center = CGPointMake(xCoord, yCoord);
         [attributes setCenter:center];
