@@ -94,8 +94,35 @@
 #pragma mark -
 #pragma mark Layout helper methods
 
--(void)calculateSpokeRadius {
+-(float)calculateSpokeRadius {
     
+    float shorterSide = fminf(self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
+    
+    float collectionViewAllowance = shorterSide / 2;
+    float itemWidthAllowance = self.itemSize.width / 2;
+    
+    return (collectionViewAllowance - (itemWidthAllowance + self.sidePadding));
+    
+}
+
+-(CGPoint)calculateCenterForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    float angularDisplacement = (2 * M_PI) / [self.collectionView numberOfItemsInSection:0];
+    
+    // Calculate current rotation
+    float theta = (angularDisplacement * indexPath.row);
+    
+    // Trig to calculate the x and y shifts required to
+    // get the hours displayed around a circle of
+    // diameter 250 points
+    float xDisplacement = sinf(theta) * [self calculateSpokeRadius];
+    float yDisplacement = cosf(theta) * [self calculateSpokeRadius];
+    
+    // Make the centre point of the hour label block
+    CGPoint center = CGPointMake((self.collectionView.bounds.size.width/2) + xDisplacement,
+                                 (self.collectionView.bounds.size.height/2) - yDisplacement);
+    
+    return center;
 }
 
 @end

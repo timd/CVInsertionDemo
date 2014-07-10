@@ -11,5 +11,6 @@
 @interface CustomLayout : UICollectionViewLayout
 
 @property (nonatomic) CGSize itemSize;
+@property (nonatomic) float sidePadding;
 
 @end
