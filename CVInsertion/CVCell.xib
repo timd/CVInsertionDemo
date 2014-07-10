@@ -13,8 +13,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfI-IM-yYw">
-                        <rect key="frame" x="0.0" y="39" width="100" height="21"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJq-E1-3ee" userLabel="Stroke view">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CsL-Uh-vdw" userLabel="Background view">
+                                <rect key="frame" x="3" y="3" width="94" height="94"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.71056013470000001" green="0.77263690630000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.71372549019999998" green="0.019607843140000001" blue="0.1843137255" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstItem="CsL-Uh-vdw" firstAttribute="leading" secondItem="hJq-E1-3ee" secondAttribute="leading" constant="3" id="7CO-Ao-X4Q"/>
+                            <constraint firstAttribute="trailing" secondItem="CsL-Uh-vdw" secondAttribute="trailing" constant="3" id="D4I-jS-KLh"/>
+                            <constraint firstAttribute="bottom" secondItem="CsL-Uh-vdw" secondAttribute="bottom" constant="3" id="DUj-xZ-Oqq"/>
+                            <constraint firstItem="CsL-Uh-vdw" firstAttribute="top" secondItem="hJq-E1-3ee" secondAttribute="top" constant="3" id="gPc-tq-Pc0"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfI-IM-yYw">
+                        <rect key="frame" x="29" y="39" width="42" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -24,6 +42,14 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" red="0.71056013470000001" green="0.77263690630000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="hJq-E1-3ee" secondAttribute="trailing" id="Azh-DA-ZbW"/>
+                <constraint firstAttribute="centerX" secondItem="dfI-IM-yYw" secondAttribute="centerX" id="Dx8-yz-OTs"/>
+                <constraint firstAttribute="bottom" secondItem="hJq-E1-3ee" secondAttribute="bottom" id="FAE-1Y-4ht"/>
+                <constraint firstItem="hJq-E1-3ee" firstAttribute="leading" secondItem="X0i-mT-pA6" secondAttribute="leading" id="ZdE-YU-fGD"/>
+                <constraint firstItem="hJq-E1-3ee" firstAttribute="top" secondItem="X0i-mT-pA6" secondAttribute="top" id="aAv-sV-lCl"/>
+                <constraint firstAttribute="centerY" secondItem="dfI-IM-yYw" secondAttribute="centerY" constant="0.5" id="hW3-lT-hl7"/>
+            </constraints>
         </collectionViewCell>
     </objects>
 </document>

@@ -7,12 +7,13 @@
 //
 
 #import "ViewController.h"
+#import "CustomLayout.h"
 
 #define kCellReuseIdentifier @"CellReuseIdentifier"
 
 @interface ViewController ()
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, strong) CustomLayout *customLayout;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @end
 
@@ -50,12 +51,18 @@
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"CVCell" bundle:nil] forCellWithReuseIdentifier:kCellReuseIdentifier];
    
+/*
     self.flowLayout = [[UICollectionViewFlowLayout alloc] init];
     [self.flowLayout setMinimumInteritemSpacing:10.0f];
     [self.flowLayout setMinimumLineSpacing:10.0f];
     [self.flowLayout setItemSize:CGSizeMake(100.0f, 100.0f)];
     
     [self.collectionView setCollectionViewLayout:self.flowLayout];
+*/
+    
+    self.customLayout = [[CustomLayout alloc] init];
+    [self.customLayout setItemSize:CGSizeMake(100.0f, 100.0f)];
+    [self.collectionView setCollectionViewLayout:self.customLayout];
     
 }
 
@@ -113,12 +120,12 @@
 }
 
 -(IBAction)didTapEmbiggenButton:(id)sender {
-    [self.flowLayout setItemSize:CGSizeMake(150.0f, 150.0f)];
+    [self.customLayout setItemSize:CGSizeMake(150.0f, 150.0f)];
     [self.collectionView reloadData];
 }
 
 -(IBAction)didTapEmsmallenButton:(id)sender {
-    [self.flowLayout setItemSize:CGSizeMake(100.0f, 100.0f)];
+    [self.customLayout setItemSize:CGSizeMake(100.0f, 100.0f)];
     [self.collectionView reloadData];
 }
 

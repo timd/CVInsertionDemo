@@ -22,6 +22,7 @@
 		226C6334196E93D600374C9C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 226C6332196E93D600374C9C /* InfoPlist.strings */; };
 		226C6336196E93D600374C9C /* CVInsertionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 226C6335196E93D600374C9C /* CVInsertionTests.m */; };
 		226C6340196E95F500374C9C /* CVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 226C633F196E95F500374C9C /* CVCell.xib */; };
+		226C6343196E9BBC00374C9C /* CustomLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 226C6342196E9BBC00374C9C /* CustomLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		226C6333196E93D600374C9C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		226C6335196E93D600374C9C /* CVInsertionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CVInsertionTests.m; sourceTree = "<group>"; };
 		226C633F196E95F500374C9C /* CVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVCell.xib; sourceTree = "<group>"; };
+		226C6341196E9BBC00374C9C /* CustomLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLayout.h; sourceTree = "<group>"; };
+		226C6342196E9BBC00374C9C /* CustomLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				226C6319196E93D600374C9C /* AppDelegate.h */,
 				226C631A196E93D600374C9C /* AppDelegate.m */,
 				226C631C196E93D600374C9C /* Main.storyboard */,
+				226C6341196E9BBC00374C9C /* CustomLayout.h */,
+				226C6342196E9BBC00374C9C /* CustomLayout.m */,
 				226C633F196E95F500374C9C /* CVCell.xib */,
 				226C631F196E93D600374C9C /* ViewController.h */,
 				226C6320196E93D600374C9C /* ViewController.m */,
@@ -255,6 +260,7 @@
 			files = (
 				226C6321196E93D600374C9C /* ViewController.m in Sources */,
 				226C631B196E93D600374C9C /* AppDelegate.m in Sources */,
+				226C6343196E9BBC00374C9C /* CustomLayout.m in Sources */,
 				226C6317196E93D600374C9C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
