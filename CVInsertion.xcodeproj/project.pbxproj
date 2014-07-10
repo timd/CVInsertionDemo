@@ -21,6 +21,7 @@
 		226C632C196E93D600374C9C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 226C630E196E93D600374C9C /* UIKit.framework */; };
 		226C6334196E93D600374C9C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 226C6332196E93D600374C9C /* InfoPlist.strings */; };
 		226C6336196E93D600374C9C /* CVInsertionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 226C6335196E93D600374C9C /* CVInsertionTests.m */; };
+		226C6340196E95F500374C9C /* CVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 226C633F196E95F500374C9C /* CVCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		226C6331196E93D600374C9C /* CVInsertionTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CVInsertionTests-Info.plist"; sourceTree = "<group>"; };
 		226C6333196E93D600374C9C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		226C6335196E93D600374C9C /* CVInsertionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CVInsertionTests.m; sourceTree = "<group>"; };
+		226C633F196E95F500374C9C /* CVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				226C6319196E93D600374C9C /* AppDelegate.h */,
 				226C631A196E93D600374C9C /* AppDelegate.m */,
 				226C631C196E93D600374C9C /* Main.storyboard */,
+				226C633F196E95F500374C9C /* CVCell.xib */,
 				226C631F196E93D600374C9C /* ViewController.h */,
 				226C6320196E93D600374C9C /* ViewController.m */,
 				226C6322196E93D600374C9C /* Images.xcassets */,
@@ -228,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				226C6340196E95F500374C9C /* CVCell.xib in Resources */,
 				226C6323196E93D600374C9C /* Images.xcassets in Resources */,
 				226C6315196E93D600374C9C /* InfoPlist.strings in Resources */,
 				226C631E196E93D600374C9C /* Main.storyboard in Resources */,
