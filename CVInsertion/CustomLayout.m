@@ -91,4 +91,11 @@
     
 }
 
+#pragma mark -
+#pragma mark Layout helper methods
+
+-(void)calculateSpokeRadius {
+    
+}
+
 @end
