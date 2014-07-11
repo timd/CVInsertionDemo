@@ -33,7 +33,7 @@
 
     // Figure out the number of items that we're dealing with
     // Here, we assume that there is only one section in the collection view
-    int numberOfItems = [self.collectionView numberOfItemsInSection:0];
+    NSInteger numberOfItems = [self.collectionView numberOfItemsInSection:0];
     
     // Create a mutable array to hold the layout attributes
     self.layoutAttributes = [[NSMutableArray alloc] initWithCapacity:numberOfItems];
@@ -48,10 +48,7 @@
         UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:itemIndexPath];
         
         // Calculate where the centre of the item should be
-        float xCoord = self.cvCenterPoint.x + (count * 10);
-        float yCoord = self.cvCenterPoint.y + (count * 10);
-        
-        CGPoint center = CGPointMake(xCoord, yCoord);
+        CGPoint center = [self calculateCenterForItemAtIndexPath:itemIndexPath];
         [attributes setCenter:center];
         
         // Set the item's size
@@ -105,24 +102,42 @@
     
 }
 
+-(float)calculateRotationPerItem {
+    
+    // Shouldn't rotate if there's only one item
+    if ([self.collectionView numberOfItemsInSection:0] == 1) {
+        return 0.0f;
+    }
+    
+    return ( 2 * M_PI / [self.collectionView numberOfItemsInSection:0]);
+    
+}
+
 -(CGPoint)calculateCenterForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    float angularDisplacement = (2 * M_PI) / [self.collectionView numberOfItemsInSection:0];
+    // If there's only one item, then it should be centered
+    if ([self.collectionView numberOfItemsInSection:0] == 1) {
+        return CGPointMake(self.collectionView.bounds.size.width / 2,
+                           self.collectionView.bounds.size.height / 2);
+    }
     
-    // Calculate current rotation
+    // Get angular displacement for this item
+    float angularDisplacement = [self calculateRotationPerItem];
+    
+    // Calculate rotation required for this item
     float theta = (angularDisplacement * indexPath.row);
     
     // Trig to calculate the x and y shifts required to
-    // get the hours displayed around a circle of
-    // diameter 250 points
+    // get the moved around a circle of diameter spoke radius
     float xDisplacement = sinf(theta) * [self calculateSpokeRadius];
     float yDisplacement = cosf(theta) * [self calculateSpokeRadius];
     
     // Make the centre point of the hour label block
-    CGPoint center = CGPointMake((self.collectionView.bounds.size.width/2) + xDisplacement,
-                                 (self.collectionView.bounds.size.height/2) - yDisplacement);
+    float xPosition = (self.collectionView.bounds.size.width/2) + xDisplacement;
+    float yPosition = (self.collectionView.bounds.size.width/2) - yDisplacement;
     
-    return center;
+    return CGPointMake(xPosition, yPosition);
+    
 }
 
 @end

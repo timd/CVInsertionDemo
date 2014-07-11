@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>050A34C8-A025-4B76-BB32-A3EA971FEDC2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CVInsertion</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DE117D44-45BB-4463-A3FF-6042D0C14BA5</key>
+		<string>ssh://github.com/timd/CVInsertionDemo.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CVInsertion.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DE117D44-45BB-4463-A3FF-6042D0C14BA5</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/timd/CVInsertionDemo.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DE117D44-45BB-4463-A3FF-6042D0C14BA5</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DE117D44-45BB-4463-A3FF-6042D0C14BA5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CVInsertion</string>
+		</dict>
+	</array>
+</dict>
+</plist>

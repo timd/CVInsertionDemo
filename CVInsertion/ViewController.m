@@ -41,7 +41,7 @@
     
     self.dataArray = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < 25; i++) {
+    for (int i = 0; i < 4; i++) {
         [self.dataArray addObject:[NSNumber numberWithInt:i]];
     }
 
@@ -51,17 +51,9 @@
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"CVCell" bundle:nil] forCellWithReuseIdentifier:kCellReuseIdentifier];
    
-/*
-    self.flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [self.flowLayout setMinimumInteritemSpacing:10.0f];
-    [self.flowLayout setMinimumLineSpacing:10.0f];
-    [self.flowLayout setItemSize:CGSizeMake(100.0f, 100.0f)];
-    
-    [self.collectionView setCollectionViewLayout:self.flowLayout];
-*/
-    
     self.customLayout = [[CustomLayout alloc] init];
     [self.customLayout setItemSize:CGSizeMake(100.0f, 100.0f)];
+    [self.customLayout setSidePadding:10.0f];
     [self.collectionView setCollectionViewLayout:self.customLayout];
     
 }
