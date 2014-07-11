@@ -20,7 +20,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CsL-Uh-vdw" userLabel="Background view">
                                 <rect key="frame" x="3" y="3" width="94" height="94"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="panda_200x200.png" translatesAutoresizingMaskIntoConstraints="NO" id="ijJ-Ml-dGS">
+                                        <rect key="frame" x="0.0" y="0.0" width="94" height="94"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" red="0.71056013470000001" green="0.77263690630000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ijJ-Ml-dGS" secondAttribute="trailing" id="2qL-cN-FLb"/>
+                                    <constraint firstAttribute="bottom" secondItem="ijJ-Ml-dGS" secondAttribute="bottom" id="S48-Wt-XXQ"/>
+                                    <constraint firstItem="ijJ-Ml-dGS" firstAttribute="top" secondItem="CsL-Uh-vdw" secondAttribute="top" id="YVj-kU-Fcb"/>
+                                    <constraint firstItem="ijJ-Ml-dGS" firstAttribute="leading" secondItem="CsL-Uh-vdw" secondAttribute="leading" id="cPW-xe-cDC"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.71372549019999998" green="0.019607843140000001" blue="0.1843137255" alpha="1" colorSpace="deviceRGB"/>
@@ -35,7 +47,7 @@
                         <rect key="frame" x="29" y="39" width="42" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -52,4 +64,7 @@
             </constraints>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="panda_200x200.png" width="200" height="200"/>
+    </resources>
 </document>

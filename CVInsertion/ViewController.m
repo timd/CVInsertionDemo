@@ -41,7 +41,7 @@
     
     self.dataArray = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 1; i++) {
         [self.dataArray addObject:[NSNumber numberWithInt:i]];
     }
 
@@ -103,8 +103,8 @@
 
 -(IBAction)didTapRemoveItemButton:(id)sender {
     
-    // Don't attempt to remove a non-existent item!
-    if ([self.dataArray count] == 0) {
+    // Don't attempt to remove the last item!
+    if ([self.dataArray count] == 1) {
         return;
     }
     

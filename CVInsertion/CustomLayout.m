@@ -92,7 +92,7 @@
 -(UICollectionViewLayoutAttributes *)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath {
 
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:itemIndexPath];
-
+    
     // Check if this indexPath appears in the list of index paths being updated.
     // If it doesn't, we can don't need to setup the center point
     NSIndexSet *indexSet = [self.indexPathsBeingUpdated indexesOfObjectsPassingTest:^BOOL(UICollectionViewUpdateItem *updateItem, NSUInteger idx, BOOL *stop) {
@@ -104,6 +104,15 @@
         return [super initialLayoutAttributesForAppearingItemAtIndexPath:itemIndexPath];
     }
 
+    // Test to see if we're dealing with a situation where we're removing
+    // the second item - then the first item needs to start where it originated,
+    // at the top
+    if ( ([self.collectionView numberOfItemsInSection:0] == 1) && (itemIndexPath.row == 0)  ){
+        [attributes setCenter:[self calculateCenterForFirstItem]];
+        [attributes setSize:self.itemSize];
+        return attributes;
+    }
+    
     // This is the new item, so we need to set its alpha, size, z-index and center
     [attributes setCenter:CGPointMake(self.collectionView.bounds.size.width/2, self.collectionView.bounds.size.height/2)];
     [attributes setAlpha:0.0f];
@@ -129,6 +138,16 @@
         return [super finalLayoutAttributesForDisappearingItemAtIndexPath:itemIndexPath];
     }
     
+    // Test to see if we're handling the removal of the first item as it moves to make
+    // way for the second one
+    if ( ([self.collectionView numberOfItemsInSection:0] == 2) && (itemIndexPath.row == 0)  ){
+        [attributes setCenter:[self calculateCenterForFirstItem]];
+        [attributes setSize:self.itemSize];
+        [attributes setZIndex:0];
+        
+        return attributes;
+    }
+
     // This is the disappearing item, so we need to set its alpha, size, z-index and center
     [attributes setCenter:CGPointMake(self.collectionView.bounds.size.width/2, self.collectionView.bounds.size.height/2)];
     [attributes setAlpha:0.0f];
@@ -189,6 +208,15 @@
     // Make the centre point of the hour label block
     float xPosition = (self.collectionView.bounds.size.width/2) + xDisplacement;
     float yPosition = (self.collectionView.bounds.size.width/2) - yDisplacement;
+    
+    return CGPointMake(xPosition, yPosition);
+    
+}
+
+-(CGPoint)calculateCenterForFirstItem {
+    
+    float xPosition = self.collectionView.bounds.size.width / 2;
+    float yPosition = 0 + (self.itemSize.height / 2) + self.sidePadding;
     
     return CGPointMake(xPosition, yPosition);
     
