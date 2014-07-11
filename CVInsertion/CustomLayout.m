@@ -107,7 +107,7 @@
     // This is the new item, so we need to set its alpha, size, z-index and center
     [attributes setCenter:CGPointMake(self.collectionView.bounds.size.width/2, self.collectionView.bounds.size.height/2)];
     [attributes setAlpha:0.0f];
-    //[attributes setSize:CGSizeZero];
+    [attributes setSize:CGSizeZero];
     [attributes setZIndex:0];
     
     return attributes;
@@ -121,19 +121,19 @@
     // Check if this indexPath appears in the list of index paths being updated.
     // If it doesn't, we can don't need to setup the center point
     NSIndexSet *indexSet = [self.indexPathsBeingUpdated indexesOfObjectsPassingTest:^BOOL(UICollectionViewUpdateItem *updateItem, NSUInteger idx, BOOL *stop) {
-        return (updateItem.indexPathAfterUpdate.row == itemIndexPath.row);
+        return (updateItem.indexPathBeforeUpdate.row == itemIndexPath.row);
     }];
     
     // This item isn't one that's disappearing, therefore we only need to set the alpha attribute
     if ([indexSet count] == 0) {
-        return [super initialLayoutAttributesForAppearingItemAtIndexPath:itemIndexPath];
+        return [super finalLayoutAttributesForDisappearingItemAtIndexPath:itemIndexPath];
     }
     
     // This is the disappearing item, so we need to set its alpha, size, z-index and center
-    //[attributes setCenter:CGPointMake(self.collectionView.bounds.size.width/2, self.collectionView.bounds.size.height/2)];
-    //[attributes setAlpha:0.0f];
-    //[attributes setSize:CGSizeZero];
-    //[attributes setZIndex:0];
+    [attributes setCenter:CGPointMake(self.collectionView.bounds.size.width/2, self.collectionView.bounds.size.height/2)];
+    [attributes setAlpha:0.0f];
+    [attributes setSize:CGSizeZero];
+    [attributes setZIndex:0];
     
     return attributes;
 }
