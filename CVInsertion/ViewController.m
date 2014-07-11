@@ -88,13 +88,16 @@
 
 -(IBAction)didTapAddItemButton:(id)sender {
 
-    NSNumber *lastItem = [self.dataArray lastObject];
+    // Get index of last item
+    NSInteger index = [self.dataArray count];
     
-    NSNumber *newItem = [NSNumber numberWithInt:[lastItem intValue] + 1];
-    
+    NSNumber *newItem = [NSNumber numberWithInteger:index];
     [self.dataArray addObject:newItem];
     
-    [self.collectionView reloadData];
+    // Create an NSIndexPath object for the new item
+    NSIndexPath *newItemIndexPath = [NSIndexPath indexPathForItem:index inSection:0];
+    // Now update the collection view
+    [self.collectionView insertItemsAtIndexPaths:@[newItemIndexPath]];
     
 }
 
@@ -105,9 +108,16 @@
         return;
     }
     
-    [self.dataArray removeLastObject];
+    // Get index of last item
+    NSInteger index = [self.dataArray count] - 1;
     
-    [self.collectionView reloadData];
+    // Remove it from the data array
+    [self.dataArray removeObjectAtIndex:index];
+    
+    // Create an NSIndexPath object for the item being removed
+    NSIndexPath *removedIndexPath = [NSIndexPath indexPathForItem:index inSection:0];
+    // Now update the collection view
+    [self.collectionView deleteItemsAtIndexPaths:@[removedIndexPath]];
     
 }
 
