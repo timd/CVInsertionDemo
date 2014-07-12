@@ -123,7 +123,7 @@
     
     [attributes setCenter:CGPointMake(self.collectionView.bounds.size.width/2, self.collectionView.bounds.size.height/2)];
     [attributes setAlpha:0.0f];
-    [attributes setSize:CGSizeZero];
+    [attributes setSize:self.itemSize];
     [attributes setZIndex:0];
     
     return attributes;
@@ -167,7 +167,7 @@
     
     [attributes setCenter:CGPointMake(self.collectionView.bounds.size.width/2, self.collectionView.bounds.size.height/2)];
     [attributes setAlpha:0.0f];
-    [attributes setSize:CGSizeZero];
+    [attributes setSize:self.itemSize];
     [attributes setZIndex:0];
     
     return attributes;
