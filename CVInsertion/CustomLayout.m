@@ -15,10 +15,21 @@
 @property (nonatomic) CGPoint cvCenterPoint;
 @property (nonatomic) float spokeLength;
 @property (nonatomic, strong) NSArray *indexPathsBeingUpdated;
+@property (nonatomic, strong) UIDynamicAnimator *dynamicAnimator;
 
 @end
 
 @implementation CustomLayout
+
+-(instancetype)init {
+
+    if (self = [super init]) {
+        self.dynamicAnimator = [[UIDynamicAnimator alloc] initWithCollectionViewLayout:self];
+    }
+    
+    return self;
+
+}
 
 -(void)prepareLayout {
     
@@ -52,16 +63,36 @@
         CGPoint center = [self calculateCenterForItemAtIndexPath:itemIndexPath];
         [attributes setCenter:center];
         
+        // Calculate item rotation
+        [attributes setTransform3D:CATransform3DMakeRotation(2 * M_PI * count/numberOfItems, 0, 0, 1)];
+        
         // Set the item's size
         [attributes setSize:self.itemSize];
         
         // Set the Z-index so they "stack" on top of each other
         [attributes setZIndex:count + 1];
-        
+
         // Add our new set of attributes into the array
         [self.layoutAttributes addObject:attributes];
         
     }
+
+    // Removing and re-adding all items in the dynamic animator isn't exactly efficient, but we need to to this
+    // so that the item sizes can be updated in response to an embiggen or emsmallen call. If we only added or removed
+    // items, then the dynamic animator won't get updated when the layout is invalidated as a consequence of changing the
+    // item sizes.
+    [self.dynamicAnimator removeAllBehaviors];
+    
+    [self.layoutAttributes enumerateObjectsUsingBlock:^(UICollectionViewLayoutAttributes *item, NSUInteger idx, BOOL *stop) {
+
+        UIAttachmentBehavior *behaviour = [[UIAttachmentBehavior alloc] initWithItem:item attachedToAnchor:[item center]];
+        behaviour.length = 0.0f;
+        behaviour.damping = 0.8f;
+        behaviour.frequency = 1.0f;
+        
+        [self.dynamicAnimator addBehavior:behaviour];
+        
+    }];
 
 }
 
@@ -78,14 +109,18 @@
 -(NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
     
     // As all elements will be shown, return all of them
-    return self.layoutAttributes;
+    // return self.layoutAttributes;
+    
+    return [self.dynamicAnimator itemsInRect:rect];
     
 }
 
 -(UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
 
     // Return the layout attributes for the specific item
-    return [self.layoutAttributes objectAtIndex:indexPath.row];
+    // return [self.layoutAttributes objectAtIndex:indexPath.row];
+    
+    return [self.dynamicAnimator layoutAttributesForCellAtIndexPath:indexPath];
     
 }
 
@@ -174,6 +209,7 @@
 }
 
 -(void)prepareForCollectionViewUpdates:(NSArray *)updateItems {
+    [super prepareForCollectionViewUpdates:updateItems];
     self.indexPathsBeingUpdated = updateItems;
 }
 
@@ -247,5 +283,7 @@
     return CGPointMake(xPosition, yPosition);
     
 }
+
+
 
 @end

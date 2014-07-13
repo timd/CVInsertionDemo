@@ -28,6 +28,12 @@
     [self setupCollectionView];
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    [self.customLayout invalidateLayout];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -134,7 +140,9 @@
     [self.customLayout setItemSize:CGSizeMake(currentWidth + 10,
                                               currentHeight + 10)];
 
+    [self.customLayout invalidateLayout];
     [self.collectionView reloadData];
+
 }
 
 -(IBAction)didTapEmsmallenButton:(id)sender {
@@ -150,7 +158,8 @@
     [self.customLayout setItemSize:CGSizeMake(currentWidth - 10,
                                               currentHeight - 10)];
     
-    [self.collectionView reloadData];
+    //[self.collectionView reloadData];
+    [self.customLayout invalidateLayout];
     
 }
 
